@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:miscelaneos/config/config.dart';
+import 'package:miscelaneos/presentation/providers/providers.dart';
 
 void main() => runApp(const ProviderScope(child: MyApp()));
 
@@ -21,6 +22,8 @@ class MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    ref.read(appStateProvider.notifier).update((state) => state);
+
     super.didChangeAppLifecycleState(state);
   }
 

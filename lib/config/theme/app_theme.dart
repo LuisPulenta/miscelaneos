@@ -7,7 +7,7 @@ class AppTheme {
         colorSchemeSeed: Colors.blue,
         textTheme: TextTheme(
           titleLarge: GoogleFonts.montserratAlternates(),
-          titleMedium: GoogleFonts.montserratAlternates(fontSize: 35),
+          titleMedium: GoogleFonts.montserratAlternates(fontSize: 25),
         ),
       );
 }
