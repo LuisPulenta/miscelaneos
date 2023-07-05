@@ -35,14 +35,6 @@ class _PermissionsView extends ConsumerWidget {
           subtitle: Text('${permissions.camera}'),
         ),
         CheckboxListTile(
-          value: permissions.photoLibraryGranted,
-          onChanged: (value) {
-            ref.read(permissionsProvider.notifier).requestPhotoLibraryAccess();
-          },
-          title: const Text('Galería de fotos'),
-          subtitle: Text('${permissions.photoLibrary}'),
-        ),
-        CheckboxListTile(
           value: permissions.locationGranted,
           onChanged: (value) {
             ref.read(permissionsProvider.notifier).requestLocationAccess();

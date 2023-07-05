@@ -17,7 +17,6 @@ class PermissionsNotifier extends StateNotifier<PermissionsState> {
   Future<void> checkPermissions() async {
     final permissionsArray = await Future.wait([
       Permission.camera.status,
-      Permission.photos.status,
       Permission.sensors.status,
       Permission.location.status,
       Permission.locationAlways.status,
@@ -26,11 +25,10 @@ class PermissionsNotifier extends StateNotifier<PermissionsState> {
 
     state = state.copyWith(
       camera: permissionsArray[0],
-      photoLibrary: permissionsArray[1],
-      sensors: permissionsArray[2],
-      location: permissionsArray[3],
-      locationAlways: permissionsArray[4],
-      locationWhenInUse: permissionsArray[5],
+      sensors: permissionsArray[1],
+      location: permissionsArray[2],
+      locationAlways: permissionsArray[3],
+      locationWhenInUse: permissionsArray[4],
     );
   }
 
@@ -47,12 +45,6 @@ class PermissionsNotifier extends StateNotifier<PermissionsState> {
   requestCameraAccess() async {
     final status = await Permission.camera.request();
     state = state.copyWith(camera: status);
-    _checkPermissionState(status);
-  }
-
-  requestPhotoLibraryAccess() async {
-    final status = await Permission.photos.request();
-    state = state.copyWith(photoLibrary: status);
     _checkPermissionState(status);
   }
 
@@ -73,7 +65,6 @@ class PermissionsNotifier extends StateNotifier<PermissionsState> {
 
 class PermissionsState {
   final PermissionStatus camera;
-  final PermissionStatus photoLibrary;
   final PermissionStatus sensors;
   final PermissionStatus location;
   final PermissionStatus locationAlways;
@@ -81,7 +72,6 @@ class PermissionsState {
 
   PermissionsState({
     this.camera = PermissionStatus.denied,
-    this.photoLibrary = PermissionStatus.denied,
     this.sensors = PermissionStatus.denied,
     this.location = PermissionStatus.denied,
     this.locationAlways = PermissionStatus.denied,
@@ -90,10 +80,6 @@ class PermissionsState {
 
   get cameraGranted {
     return camera == PermissionStatus.granted;
-  }
-
-  get photoLibraryGranted {
-    return photoLibrary == PermissionStatus.granted;
   }
 
   get sensorsGranted {
@@ -114,7 +100,6 @@ class PermissionsState {
 
   PermissionsState copyWith({
     PermissionStatus? camera,
-    PermissionStatus? photoLibrary,
     PermissionStatus? sensors,
     PermissionStatus? location,
     PermissionStatus? locationAlways,
@@ -122,7 +107,6 @@ class PermissionsState {
   }) =>
       PermissionsState(
         camera: camera ?? this.camera,
-        photoLibrary: photoLibrary ?? this.photoLibrary,
         sensors: sensors ?? this.sensors,
         location: location ?? this.location,
         locationAlways: locationAlways ?? this.locationAlways,
