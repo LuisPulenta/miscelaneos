@@ -23,13 +23,40 @@ class _PermissionsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final permissions = ref.watch(permissionsProvider);
     return ListView(
       children: [
         CheckboxListTile(
-          value: true,
-          onChanged: (value) {},
+          value: permissions.cameraGranted,
+          onChanged: (value) {
+            ref.read(permissionsProvider.notifier).requestCameraAccess();
+          },
           title: const Text('Cámara'),
-          subtitle: const Text('Estado actual'),
+          subtitle: Text('${permissions.camera}'),
+        ),
+        CheckboxListTile(
+          value: permissions.photoLibraryGranted,
+          onChanged: (value) {
+            ref.read(permissionsProvider.notifier).requestPhotoLibraryAccess();
+          },
+          title: const Text('Galería de fotos'),
+          subtitle: Text('${permissions.photoLibrary}'),
+        ),
+        CheckboxListTile(
+          value: permissions.locationGranted,
+          onChanged: (value) {
+            ref.read(permissionsProvider.notifier).requestLocationAccess();
+          },
+          title: const Text('Ubicación'),
+          subtitle: Text('${permissions.location}'),
+        ),
+        CheckboxListTile(
+          value: permissions.sensorsGranted,
+          onChanged: (value) {
+            ref.read(permissionsProvider.notifier).requestSensorsAccess();
+          },
+          title: const Text('Sensores'),
+          subtitle: Text('${permissions.sensors}'),
         ),
       ],
     );
