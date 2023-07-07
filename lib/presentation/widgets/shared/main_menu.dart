@@ -12,38 +12,16 @@ class MainMenu extends StatelessWidget {
       mainAxisSpacing: 10,
       children: menuItems
           .map((item) => HomeMenuItem(
-              title: item.title, icon: item.icon, route: item.route))
+              title: item.title,
+              icon: item.icon,
+              route: item.route,
+              bgColors: item.colors))
           .toList(),
     );
   }
 }
 
-//----------------------------------------------------------------
-
-final List<MenuItem> menuItems = [
-  MenuItem(title: 'Giroscopio', icon: Icons.downloading, route: '/gyroscope'),
-  MenuItem(title: 'Acelerómetro', icon: Icons.speed, route: '/accelerometer'),
-  MenuItem(
-      title: 'Magnetómetro',
-      icon: Icons.explore_outlined,
-      route: '/magnetometer'),
-  MenuItem(
-      title: 'Gisroscopio Ball',
-      icon: Icons.sports_baseball_outlined,
-      route: '/gyroscope-ball'),
-  MenuItem(title: 'Brújula', icon: Icons.explore, route: '/compass'),
-];
-
-//----------------------------------------------------------------
-class MenuItem {
-  final String title;
-  final IconData icon;
-  final String route;
-
-  MenuItem({required this.title, required this.icon, required this.route});
-}
-
-//----------------------------------------------------------------
+//--------------------- HomeMenuItem -----------------------------------
 
 class HomeMenuItem extends StatelessWidget {
   final String title;
@@ -91,4 +69,48 @@ class HomeMenuItem extends StatelessWidget {
       ),
     );
   }
+}
+
+//----------------------------------------------------------------
+
+final List<MenuItem> menuItems = [
+  MenuItem(
+      title: 'Giroscopio',
+      icon: Icons.downloading,
+      route: '/gyroscope',
+      colors: [Colors.red, Colors.pink]),
+  MenuItem(
+      title: 'Acelerómetro',
+      icon: Icons.speed,
+      route: '/accelerometer',
+      colors: [Colors.greenAccent, Colors.green]),
+  MenuItem(
+      title: 'Magnetómetro',
+      icon: Icons.explore_outlined,
+      route: '/magnetometer',
+      colors: [Colors.yellow, Colors.orange]),
+  MenuItem(
+      title: 'Gisroscopio Ball',
+      icon: Icons.sports_baseball_outlined,
+      route: '/gyroscope-ball',
+      colors: [Colors.purpleAccent, Colors.purple]),
+  MenuItem(
+      title: 'Brújula',
+      icon: Icons.explore,
+      route: '/compass',
+      colors: [Colors.lightBlueAccent, Colors.blue]),
+];
+
+//----------------------------------------------------------------
+class MenuItem {
+  final String title;
+  final IconData icon;
+  final String route;
+  final List<Color> colors;
+
+  MenuItem(
+      {required this.title,
+      required this.icon,
+      required this.route,
+      this.colors = const [Colors.lightBlue, Colors.blue]});
 }
