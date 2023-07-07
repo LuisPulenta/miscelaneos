@@ -10,4 +10,24 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
     path: '/permissions',
     builder: (context, state) => const PermissionsScreen(),
   ),
+  GoRoute(
+    path: '/gyroscope',
+    builder: (context, state) => const GyroscopeScreen(),
+  ),
+  GoRoute(
+    path: '/accelerometer',
+    builder: (context, state) => const AccelerometerScreen(),
+  ),
+  GoRoute(
+    path: '/magnetometer',
+    builder: (context, state) => const MagnetometerScreen(),
+  ),
+  GoRoute(
+    path: '/compass',
+    builder: (context, state) => const CompassScreen(),
+  ),
+  GoRoute(
+    path: '/gyroscope-ball',
+    builder: (context, state) => const GyroscopeBallScreen(),
+  ),
 ]);
