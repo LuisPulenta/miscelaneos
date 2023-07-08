@@ -12,7 +12,7 @@ class CompassScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locationGranted = ref.watch(permissionsProvider).locationGranted;
-    final compassHeading$ = ref.watch(accelerometerGravityProvider);
+    final compassHeading$ = ref.watch(compassProvider);
 
     if (!locationGranted) {
       return const AskLocationScreen();
@@ -28,7 +28,7 @@ class CompassScreen extends ConsumerWidget {
       ),
       body: Center(
         child: compassHeading$.when(
-            data: (heading) => Compass(heading: heading.x * 180 ?? 0),
+            data: (heading) => Compass(heading: heading ?? 0),
             error: (error, stackTrace) =>
                 Text('$error', style: const TextStyle(color: Colors.white)),
             loading: () => const CircularProgressIndicator()),
