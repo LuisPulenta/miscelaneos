@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:miscelaneos/domain/domain.dart';
 import 'package:miscelaneos/infrastructure/mappers/pokemon_mapper.dart';
 
-class PokemonsDatasourcesImpl implements PokemonsDatasource {
+class PokemonsDatasourceImpl implements PokemonsDatasource {
   final Dio dio;
 
-  PokemonsDatasourcesImpl()
+  PokemonsDatasourceImpl()
       : dio = Dio(BaseOptions(baseUrl: 'https://pokeapi.co/api/v2'));
 
   @override
@@ -19,6 +19,5 @@ class PokemonsDatasourcesImpl implements PokemonsDatasource {
     } catch (e) {
       return (null, 'No se pudo obtener el Polemon');
     }
-    throw UnimplementedError();
   }
 }
