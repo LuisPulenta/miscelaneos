@@ -51,3 +51,7 @@ class MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
     );
   }
 }
+
+(String, int) getStrinAndInteger(){
+  return ('Hola Mundo',10);
+}

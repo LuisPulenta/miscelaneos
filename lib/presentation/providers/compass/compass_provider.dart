@@ -8,7 +8,6 @@ final compassProvider = StreamProvider<double?>((ref) async* {
 
   try {
     await for (final event in FlutterCompass.events!) {
-      print('EVENTO: ${event.heading}');
       yield event.heading;
     }
   } catch (e) {

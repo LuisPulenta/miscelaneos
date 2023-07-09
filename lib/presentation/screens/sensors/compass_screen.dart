@@ -1,5 +1,3 @@
-import 'dart:math' show pi;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -95,7 +93,7 @@ class _CompassState extends State<Compass> {
             AnimatedRotation(
               curve: Curves.easeInOut,
               turns: getTurns(),
-              duration: Duration(milliseconds: 500),
+              duration: const Duration(milliseconds: 500),
               child: Image.asset('assets/compass/needle-1.png'),
             )
           ],

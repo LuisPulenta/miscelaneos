@@ -99,6 +99,11 @@ final List<MenuItem> menuItems = [
       icon: Icons.explore,
       route: '/compass',
       colors: [Colors.lightBlueAccent, Colors.blue]),
+  MenuItem(
+      title: 'Pokemons',
+      icon: Icons.catching_pokemon,
+      route: '/pokemons',
+      colors: [Colors.cyanAccent, Colors.cyan]),
 ];
 
 //----------------------------------------------------------------
