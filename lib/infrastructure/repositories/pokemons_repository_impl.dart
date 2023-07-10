@@ -4,7 +4,7 @@ import 'package:miscelaneos/infrastructure/infrastructure.dart';
 class PokemonsRepositoryImpl implements PokemonRepository {
   final PokemonsDatasource datasource;
 
-  PokemonsRepositoryImpl(PokemonsDatasource? datasource)
+  PokemonsRepositoryImpl({PokemonsDatasource? datasource})
       : datasource = datasource ?? PokemonsDatasourceImpl();
 
   @override

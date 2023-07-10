@@ -11,13 +11,13 @@ class PokemonsDatasourceImpl implements PokemonsDatasource {
   @override
   Future<(Pokemon?, String)> getPokemon(String id) async {
     try {
-      final resp = await dio.get('pokemon/$id');
+      final resp = await dio.get('/pokemon/$id');
 
       final pokemon = PokemonMapper.pokeApiPokemonToEntity(resp.data);
 
       return (pokemon, 'Data obtenida correctamente');
     } catch (e) {
-      return (null, 'No se pudo obtener el Polemon');
+      return (null, 'No se pudo obtener el Pokemon');
     }
   }
 }
