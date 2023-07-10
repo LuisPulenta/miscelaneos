@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:miscelaneos/config/config.dart';
 import 'package:miscelaneos/domain/domain.dart';
 import 'package:miscelaneos/presentation/providers/providers.dart';
 
@@ -21,6 +20,7 @@ class PokemonScreen extends ConsumerWidget {
   }
 }
 
+//------------------------------------------------------------
 class _PokemonView extends StatelessWidget {
   final Pokemon pokemon;
 
@@ -31,26 +31,28 @@ class _PokemonView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(pokemon.name),
-        actions: [
-          IconButton(
-              onPressed: () {
-                // Link = Deeplink
-              },
-              icon: const Icon(Icons.share_outlined))
-        ],
+        centerTitle: true,
+        // actions: [
+        //   IconButton(
+        //       onPressed: () {
+        //         // Link = Deeplink
+        //       },
+        //       icon: const Icon(Icons.share_outlined))
+        // ],
       ),
       body: Center(
         child: Image.network(
           pokemon.spriteFront,
           fit: BoxFit.contain,
-          width: 150,
-          height: 150,
+          width: 200,
+          height: 200,
         ),
       ),
     );
   }
 }
 
+//------------------------------------------------------------
 class _ErrorWidget extends StatelessWidget {
   final String message;
 
@@ -66,6 +68,7 @@ class _ErrorWidget extends StatelessWidget {
   }
 }
 
+//------------------------------------------------------------
 class _LoadingWidget extends StatelessWidget {
   const _LoadingWidget();
 
