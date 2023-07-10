@@ -44,7 +44,7 @@
                 <data android:scheme="http"  />
                 <data android:scheme="https" />
                 <!-- TODO -->
-                <data android:host="el dominio web SIN HTTPS://"/>
+                <data android:host="pokemon-deeplinking.up.railway.app"/>
             </intent-filter>
 
         </activity>
