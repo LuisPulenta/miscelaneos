@@ -104,6 +104,11 @@ final List<MenuItem> menuItems = [
       icon: Icons.catching_pokemon,
       route: '/pokemons',
       colors: [Colors.cyanAccent, Colors.cyan]),
+  MenuItem(
+      title: 'Biometrics',
+      icon: Icons.fingerprint,
+      route: '/biometrics',
+      colors: [Colors.blueAccent, Colors.blue]),
 ];
 
 //----------------------------------------------------------------
