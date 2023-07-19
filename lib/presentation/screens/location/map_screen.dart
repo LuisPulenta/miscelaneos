@@ -33,9 +33,7 @@ class _MapView extends StatefulWidget {
   final double initialLatitude;
   final double initialLongitude;
   const _MapView(
-      {super.key,
-      required this.initialLatitude,
-      required this.initialLongitude});
+      {required this.initialLatitude, required this.initialLongitude});
 
   @override
   State<_MapView> createState() => _MapViewState();
