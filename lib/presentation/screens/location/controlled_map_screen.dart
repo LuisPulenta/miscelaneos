@@ -32,8 +32,7 @@ class ControlledMapScreen extends ConsumerWidget {
 class _MapAndControls extends StatelessWidget {
   final double latitude;
   final double longitude;
-  const _MapAndControls(
-      {super.key, required this.latitude, required this.longitude});
+  const _MapAndControls({required this.latitude, required this.longitude});
 
   @override
   Widget build(BuildContext context) {
