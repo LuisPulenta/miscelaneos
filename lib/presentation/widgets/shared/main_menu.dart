@@ -109,6 +109,21 @@ final List<MenuItem> menuItems = [
       icon: Icons.fingerprint,
       route: '/biometrics',
       colors: [Colors.blueAccent, Colors.blue]),
+  MenuItem(
+      title: 'Ubicación',
+      icon: Icons.pin_drop,
+      route: '/location',
+      colors: [Colors.red, Colors.redAccent]),
+  MenuItem(
+      title: 'Mapas',
+      icon: Icons.map_outlined,
+      route: '/maps',
+      colors: [Colors.green, Colors.greenAccent]),
+  MenuItem(
+      title: 'Controlado',
+      icon: Icons.gamepad_outlined,
+      route: '/controlled-map',
+      colors: [Colors.orange, Colors.orangeAccent]),
 ];
 
 //----------------------------------------------------------------

@@ -44,6 +44,7 @@ dependencies:
   dio: ^5.1.2
   share_plus: ^7.0.0
   local_auth: ^2.1.6
+  geolocator: ^9.0.2
   
   
 
