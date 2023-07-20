@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 //----------------------- Provider ----------------------------
 
 final mapControllerProvider =
-    StateNotifierProvider<MapNotifier, MapState>((ref) {
+    StateNotifierProvider.autoDispose<MapNotifier, MapState>((ref) {
   return MapNotifier();
 });
 
@@ -14,8 +14,13 @@ final mapControllerProvider =
 
 class MapNotifier extends StateNotifier<MapState> {
   StreamSubscription? userLocation$;
+  (double, double)? lastKnownLocation;
 
-  MapNotifier() : super(MapState());
+  MapNotifier() : super(MapState()) {
+    trackUser().listen((event) {
+      lastKnownLocation = (event.$1, event.$2);
+    });
+  }
 
   Stream<(double, double)> trackUser() async* {
     await for (final pos in Geolocator.getPositionStream()) {
@@ -39,12 +44,42 @@ class MapNotifier extends StateNotifier<MapState> {
   toggleFollowUser() {
     state = state.copyWith(followUser: !state.followUser);
     if (state.followUser) {
+      findUser();
       userLocation$ = trackUser().listen((event) {
         gotoLocation(event.$1, event.$2);
       });
     } else {
       userLocation$?.cancel();
     }
+  }
+
+  findUser() {
+    if (lastKnownLocation == null) return;
+
+    final (latitude, longitude) = lastKnownLocation!;
+
+    gotoLocation(latitude, longitude);
+
+    // trackUser().take(1).listen((event) {
+    //   gotoLocation(event.$1, event.$2);
+    // });
+  }
+
+  void addMarkerCurrentPosition() {
+    if (lastKnownLocation == null) return;
+
+    final (latitude, longitude) = lastKnownLocation!;
+    addMarker(latitude, longitude, 'Por aquí pasó el Usuario');
+  }
+
+  void addMarker(double latitude, double longitude, String name) {
+    final newMarker = Marker(
+      markerId: MarkerId('${state.markers.length}'),
+      position: LatLng(latitude, longitude),
+      infoWindow:
+          InfoWindow(title: name, snippet: 'Esto es el Snippet del InfoWindow'),
+    );
+    state = state.copyWith(markers: [...state.markers, newMarker]);
   }
 }
 
@@ -60,6 +95,10 @@ class MapState {
       this.followUser = false,
       this.markers = const [],
       this.controller});
+
+  Set<Marker> get markersSet {
+    return Set.from(markers);
+  }
 
   MapState copyWith({
     bool? isReady,
