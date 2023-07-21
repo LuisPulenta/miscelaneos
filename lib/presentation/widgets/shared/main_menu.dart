@@ -124,6 +124,11 @@ final List<MenuItem> menuItems = [
       icon: Icons.gamepad_outlined,
       route: '/controlled-map',
       colors: [Colors.orange, Colors.orangeAccent]),
+  MenuItem(
+      title: 'Badge',
+      icon: Icons.notification_important,
+      route: '/badge',
+      colors: [Colors.green, Colors.lightGreen]),
 ];
 
 //----------------------------------------------------------------

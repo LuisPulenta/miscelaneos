@@ -6,6 +6,7 @@ import 'package:miscelaneos/presentation/providers/providers.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  QuickActionsPlugin.registerActions();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -52,6 +53,6 @@ class MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver {
   }
 }
 
-(String, int) getStrinAndInteger(){
-  return ('Hola Mundo',10);
+(String, int) getStrinAndInteger() {
+  return ('Hola Mundo', 10);
 }
