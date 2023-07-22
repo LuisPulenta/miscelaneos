@@ -49,7 +49,7 @@ dependencies:
   quick_actions: ^1.0.5
   flutter_app_badger: ^1.5.0
   google_mobile_ads: ^3.0.0
-  
+  shared_preferences: ^2.1.1
 
 
 dev_dependencies:
