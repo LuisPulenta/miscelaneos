@@ -129,6 +129,16 @@ final List<MenuItem> menuItems = [
       icon: Icons.notification_important,
       route: '/badge',
       colors: [Colors.green, Colors.lightGreen]),
+  MenuItem(
+      title: 'Ad Full',
+      icon: Icons.ad_units_rounded,
+      route: '/ad-fullscreen',
+      colors: [Colors.deepOrange, Colors.yellowAccent]),
+  MenuItem(
+      title: 'Ad Reward',
+      icon: Icons.fort_sharp,
+      route: '/ad-rewarded',
+      colors: [Colors.deepPurple, Colors.lightBlue]),
 ];
 
 //----------------------------------------------------------------
