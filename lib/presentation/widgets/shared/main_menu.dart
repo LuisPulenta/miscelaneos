@@ -139,6 +139,11 @@ final List<MenuItem> menuItems = [
       icon: Icons.fort_sharp,
       route: '/ad-rewarded',
       colors: [Colors.deepPurple, Colors.lightBlue]),
+  MenuItem(
+      title: 'Backround Process',
+      icon: Icons.storage_rounded,
+      route: '/db-pokemons',
+      colors: [Colors.tealAccent, Colors.teal]),
 ];
 
 //----------------------------------------------------------------
