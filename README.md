@@ -9,3 +9,6 @@ cd android
 ./gradlew signingReport
 
 Cambiar ApiKey de GoogleMaps
+
+Generador de código (ISAR)
+flutter pub run build_runner build
