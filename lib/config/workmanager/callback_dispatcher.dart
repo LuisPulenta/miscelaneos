@@ -17,7 +17,7 @@ void callbackDispatcher() {
         await loadNextPokemon();
         break;
       case fetchPeriodicBackgroundTaskKey:
-        print('fetchPeriodicBackgroundTaskKey');
+        await loadNextPokemon();
         break;
       case Workmanager.iOSBackgroundTask:
         print('Workmanager.iOSBackgroundTask');

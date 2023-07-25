@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:miscelaneos/config/config.dart';
 import 'package:miscelaneos/domain/domain.dart';
+import 'package:miscelaneos/presentation/providers/background_tasks/background_tasks_provider.dart';
 import 'package:miscelaneos/presentation/providers/providers.dart';
 import 'package:workmanager/workmanager.dart';
 
@@ -11,6 +12,7 @@ class DbPokemonsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pokemonsAsync = ref.watch(pokemonDbProvider);
+    final isBackgroundFetchActive = ref.watch(backgroundPokemonFetchProvider);
 
     if (pokemonsAsync.isLoading) {
       return const Scaffold(
@@ -46,8 +48,12 @@ class DbPokemonsScreen extends ConsumerWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: const Text('Activar fetch periódico'),
+        onPressed: () {
+          ref.read(backgroundPokemonFetchProvider.notifier).toggleProcess();
+        },
+        label: isBackgroundFetchActive == true
+            ? const Text('Desactivar fetch periódico')
+            : const Text('Activar fetch periódico'),
         icon: const Icon(Icons.av_timer),
       ),
     );
